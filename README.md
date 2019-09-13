@@ -1,2 +1,2 @@
-# .config
-config of Linux
+# This is Config of Linux
+
