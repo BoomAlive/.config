@@ -1,0 +1,42 @@
+CookieSession
+
+Cookie
+CookieCookie
++ 
+1. 
+2. 
+3. 
+Session
+SessionSessionId(Cookie)SessionId
+
+## 第二层楼
+### Cookie和Session的区别
+1. 存储位置不同，Cookie存储在客户端中，Session存储在服务端中；
+2. 存取内容不同，Cookie只能保存ACSII，Session能保存任何内容；
+3. 有效期不同，Cookie可通过MaxAge属性设置有效期，Session一般有效期较短，客户端关闭或者超时就会失效；
+4. 安全性不同，Cookie存储在客户端中，比较容易窃取，Session存储在服务端中，相较于Cookie安全；
+5. 容量不同，单个Cookie一般不超过4K，Session远高于Cookie。
+## 第三层楼
+### 联系
+![联系详情](https://user-gold-cdn.xitu.io/2019/5/13/16aafb5d90f398e2?imageView2/0/w/1280/h/960/ignore-error/1 “详细流程”)
+1. 客户端第一次请求服务器时，服务器会根据客户端提交的信息创建对应的Session，相应时，将对应的Session的SessionId一并返回，客户端收到后，一般把SessionId保存在Cookie中，并记录SessionId对应的域名；
+2. 下一次请求时，客户端会自动判断此域名下时候存在Cookie，如果有，将其发送给服务端，服务端识别其中的SessionId，通过SessionId查找对应的Session信息，如果没找到，说明客户端没有登录或者登陆失效。
+SessionIdCookieSession
+
+
+Cookie
+1. SessionIDCookieURLSessionIDPost
+2.Token机制，类似于Session机制
+
+## 第五层楼
+### Session分布式为题
+1. Nginx ip_hash策略，服务端使用Nginx代理，每个请求按访问IP进行hash，保证同一IP地址访问同一台服务器；
+2. Session复制，当一个Session发生改变时，该节点会把这个Session所有内容序列化，会通过广播的方式将最新的Session发送给其他服务器；
+3. 共享Session，服务端无状态会话，将用户的Session等信息使用缓存中间件统一管理，保障分发到每一台服务器的响应结果一致。
+
+
+
+同源：协议，域名，端口相同
+1. 
+2. Jsonp
+   + <script>Javascript只支持GET请求
